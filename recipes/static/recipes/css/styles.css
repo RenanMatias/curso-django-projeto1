@@ -169,6 +169,11 @@ h6 {
     padding-bottom: 2rem;
 }
 
+.recipe-title-container a {
+    text-decoration: none;
+    color: var(--color-primary-dark);
+}
+
 .recipe-content {
     padding: var(--spacing-gutter-medium);
     padding-top: 2rem;
