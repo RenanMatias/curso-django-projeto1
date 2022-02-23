@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_list_or_404
-from utils.recipes.factory import make_recipe
 from .models import Recipe
 
 
@@ -25,7 +24,12 @@ def category(request, category_id):
 
 
 def recipe(request, id):
+    recipe = Recipe.objects.filter(
+        pk=id,  # pk é a Primary Key do Model Recipe. Também pode ser usado id ao invés de pk
+        is_published=True
+    ).order_by('-id').first()
+
     return render(request, 'recipes/pages/recipe-view.html', context={
-        'recipe': make_recipe(),
+        'recipe': recipe,
         'is_detail_page': True
     })
