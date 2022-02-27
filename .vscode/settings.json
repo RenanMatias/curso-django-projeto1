@@ -4,7 +4,7 @@
     "polacode.backgroundColor": "#6633CC",
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
     "editor.lineHeight": 26,
     "editor.fontFamily": "JetBrains Mono",
     "terminal.integrated.shell.linux": "/bin/zsh",
