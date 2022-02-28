@@ -1,6 +1,9 @@
+from sunau import Au_read
+from unicodedata import name
 from django.test import TestCase
 from django.urls import reverse, resolve
 from recipes import views
+from recipes.models import Category, Recipe, User
 
 
 class RecipeViewsTest(TestCase):
@@ -24,7 +27,33 @@ class RecipeViewsTest(TestCase):
             response.content.decode('utf-8')
         )
 
+    def test_recipe_home_template_loads_recipes(self):
+        category = Category.objects.create(name='Category')
+        author = User.objects.create_user(
+            first_name='user',
+            last_name='name',
+            username='username',
+            password='123456',
+            email='username@email.com',
+        )
+        recipe = Recipe.objects.create(
+            category=category,
+            author=author,
+            title='Recipe Title',
+            description='Recipe Description',
+            slug='recipe-slug',
+            preparation_time=10,
+            preparation_time_unit='Minutos',
+            servings=5,
+            servings_unit='Porções',
+            preparation_steps='Recipe Preparation Steps',
+            preparation_step_is_html=False,
+            is_published=True,
+        )
+        ...
+
     # CATEGORY
+
     def test_recipe_category_view_function_is_correct(self):
         view = resolve(reverse('recipes:category',
                        kwargs={'category_id': 1000}))
