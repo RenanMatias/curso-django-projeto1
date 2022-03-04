@@ -105,7 +105,7 @@
     "material-icon-theme.languages.associations": {
         "dotenv": "tune"
     },
-    "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "Night Owl Light",
     "typescript.updateImportsOnFileMove.enabled": "never",
     "tabnine.experimentalAutoImports": true,
     "cSpell.enableFiletypes": [
