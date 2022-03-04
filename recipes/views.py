@@ -37,5 +37,5 @@ def recipe(request, id):
     })
 
 
-def search(resquest):
-    ...
+def search(request):
+    return render(request, 'recipes/pages/search.html')
