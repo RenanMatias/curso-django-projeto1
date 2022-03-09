@@ -1,12 +1,11 @@
 {
     "terminal.integrated.fontSize": 18,
     "workbench.iconTheme": "material-icon-theme",
-    "polacode.backgroundColor": "#6633CC",
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
-    "editor.fontSize": 14,
+    "editor.fontSize": 13,
     "editor.lineHeight": 26,
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "Operator Mono",
     "terminal.integrated.shell.linux": "/bin/zsh",
     "editor.fontLigatures": true,
     "editor.semanticHighlighting.enabled": false,
@@ -61,11 +60,8 @@
         "javascript": "javascriptreact",
         "typescript": "typescriptreact"
     },
-    "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.codeLens.authors.enabled": false,
     "git.enableSmartCommit": true,
     "terminal.integrated.shell.osx": "/bin/zsh",
-    "liveshare.featureSet": "insiders",
     "typescript.tsserver.log": "off",
     "javascript.suggest.autoImports": true,
     "typescript.suggest.autoImports": true,
@@ -107,7 +103,6 @@
     },
     "workbench.colorTheme": "OM Theme (Night Owl Italic)",
     "typescript.updateImportsOnFileMove.enabled": "never",
-    "tabnine.experimentalAutoImports": true,
     "cSpell.enableFiletypes": [
         "!asciidoc",
         "!c",
@@ -129,10 +124,6 @@
     ],
     "cSpell.language": "en,pt,pt-BR",
     "editor.suggestSelection": "first",
-    "codesnap.backgroundColor": "transparent",
-    "codesnap.transparentBackground": true,
-    "codesnap.boxShadow": "0 0 0",
-    "liveServer.settings.donotVerifyTags": true,
     "cSpell.userWords": [
         "chakra",
         "middlewares",
@@ -144,25 +135,7 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "workbench.productIconTheme": "fluent-icons",
     "terminal.integrated.showExitAlert": false,
-    "splitHTMLAttributes.closingBracketOnNewLine": true,
-    "todo-tree.general.tags": [
-        "BUG",
-        "HACK",
-        "FIXME",
-        "TODO",
-        "XXX",
-        "[ ]",
-        "[x]"
-    ],
-    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
-    "security.workspace.trust.untrustedFiles": "newWindow",
-    "liveServer.settings.donotShowInfoMsg": true,
-    "gitlens.advanced.messages": {
-        "suppressGitMissingWarning": true
-    },
-    "redhat.telemetry.enabled": true,
     "workbench.startupEditor": "none",
-    "jupyter.askForKernelRestart": false,
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
@@ -171,18 +144,6 @@
         "editor.defaultFormatter": "aeschli.vscode-css-formatter"
     },
     "notebook.lineNumbers": "on",
-    "sync.gist": "ec5c9ca679cc16816b21aa3e6107b98c",
-    "sync.autoDownload": true,
-    "sync.autoUpload": true,
-    "sync.quietSync": true,
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.currentLine.enabled": false,
-    "gitlens.codeLens.enabled": false,
-    "yaml.schemas": {
-        "file:///c%3A/Users/renanm/.vscode/extensions/atlassian.atlascode-2.10.0/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
-    },
-    "atlascode.bitbucket.enabled": true,
-    "atlascode.jira.enabled": false,
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "[html]": {
         "editor.formatOnSave": true,
@@ -191,7 +152,8 @@
             "other": true,
             "comments": true,
             "strings": true
-        }
+        },
+        "editor.tabSize": 2,
     },
     "[django-html]": {
         "editor.formatOnSave": false,
@@ -200,7 +162,8 @@
             "other": true,
             "comments": true,
             "strings": true
-        }
+        },
+        "editor.tabSize": 2,
     },
     "[json]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
