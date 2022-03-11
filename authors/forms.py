@@ -12,3 +12,28 @@ class RegisterForm(forms.ModelForm):
             'email',
             'password',
         ]
+        # exclude = ['frist_name']
+        labels = {
+            'username': 'Username',
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'email': 'Email',
+            'password': 'Password',
+        }
+        help_texts = {
+            'email': 'The email must be valid.',
+        }
+        error_messages = {
+            'username': {
+                'required': 'This field must not be empty',
+            }
+        }
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'placeholder': 'Type your username here',
+                'class': 'input text-imput',
+            }),
+            'password': forms.PasswordInput(attrs={
+                'placeholder': 'Type your password here'
+            })
+        }
