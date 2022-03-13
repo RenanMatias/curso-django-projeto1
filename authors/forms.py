@@ -100,3 +100,23 @@ class RegisterForm(forms.ModelForm):
             )
 
         return data
+
+    def clean(self):
+        cleand_data = super().clean()
+
+        password = cleand_data.get('password')
+        password2 = cleand_data.get('password2')
+
+        if password != password2:
+            password_confimation_error = ValidationError(
+                'Password and password2 must be equal',
+                code='invalid'
+            )
+            raise ValidationError(
+                {
+                    'password': password_confimation_error,
+                    'password2': [
+                        password_confimation_error,
+                    ],
+                }
+            )
