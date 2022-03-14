@@ -33,7 +33,7 @@ class RegisterForm(forms.ModelForm):
         add_placeholder(self.fields['email'], 'Your e-mail')
         add_placeholder(self.fields['email'], 'Your e-mail')
         add_placeholder(self.fields['first_name'], 'Ex.: John')
-        add_placeholder(self.fields['last_name'], 'Ex.: Dow')
+        add_placeholder(self.fields['last_name'], 'Ex.: Doe')
         add_attr(self.fields['username'], 'css', 'a-css-class')
 
     password = forms.CharField(
