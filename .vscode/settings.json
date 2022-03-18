@@ -59,5 +59,6 @@
         "django-html": "html", // batisteo.vscode-django
         "javascript": "javascriptreact",
         "typescript": "typescriptreact"
-    }
+    },
+    "cSpell.language": "en,pt,pt-BR",
 }
