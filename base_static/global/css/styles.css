@@ -342,11 +342,24 @@
     gap: calc(var(--spacing-gutter-medium) / 2) var(--spacing-gutter-medium)
   }
 
+  .inline-form {
+    display: inline;
+  }
+  
   .form-content button {
     padding: 1rem 2rem;
     border: none;
     background: var(--color-primary-dark);
     color: var(--color-white);
+  }
+  
+  .plaintext-button {
+    display: inline;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--color-primary);
+    font-size: 1.6rem;
   }
 
   /* Messages */
