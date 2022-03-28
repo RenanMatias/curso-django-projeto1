@@ -2,11 +2,7 @@ from django.test import TestCase
 from recipes.models import Category, Recipe, User
 
 
-class RecipeTestBase(TestCase):
-    # setUp is executes BEFORE each test
-    def setUp(self) -> None:
-        return super().setUp()
-
+class RecipeMixing:
     def make_category(self, name='Categoria'):
         return Category.objects.create(name=name)
 
@@ -59,3 +55,9 @@ class RecipeTestBase(TestCase):
             preparation_step_is_html=preparation_step_is_html,
             is_published=is_published,
         )
+
+
+class RecipeTestBase(TestCase, RecipeMixing):
+    # setUp is executes BEFORE each test
+    def setUp(self) -> None:
+        return super().setUp()
