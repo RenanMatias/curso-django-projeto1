@@ -53,7 +53,7 @@ class AuthorsLoginTest(AuthorsBaseTest):
         # User sees the login form
         form = self.browser.find_element(By.CLASS_NAME, 'main-form')
 
-        # User trys send empty data
+        # User tries send empty data
         username = self.browser.find_element(By.NAME, 'username')
         password = self.browser.find_element(By.NAME, 'password')
 
