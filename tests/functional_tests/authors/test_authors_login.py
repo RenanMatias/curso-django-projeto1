@@ -68,3 +68,29 @@ class AuthorsLoginTest(AuthorsBaseTest):
             'Invalid username or password',
             self.browser.find_element(By.TAG_NAME, 'body').text
         )
+
+    def test_form_login_is_invalid_credentials(self):
+
+        # User opens the login page
+        self.browser.get(
+            self.live_server_url + reverse('authors:login')
+        )
+
+        # User sees the login form
+        form = self.browser.find_element(By.CLASS_NAME, 'main-form')
+
+        # User trys send data values that does not match any user
+        username = self.browser.find_element(By.NAME, 'username')
+        password = self.browser.find_element(By.NAME, 'password')
+
+        username.send_keys('invalid_user')
+        password.send_keys('invalid_password')
+
+        # User clicks the login button
+        form.submit()
+
+        # User sees a message error on screen
+        self.assertIn(
+            'Invalid credentials',
+            self.browser.find_element(By.TAG_NAME, 'body').text
+        )
