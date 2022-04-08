@@ -142,7 +142,7 @@ def dashboard_recipe_edit(request, id):
 
 
 @login_required(login_url='authors:login', redirect_field_name='next')
-def dashboard_recipe_create(request):
+def dashboard_recipe_new(request):
 
     form = AuthorRecipeForm(
         data=request.POST or None,
@@ -166,7 +166,7 @@ def dashboard_recipe_create(request):
 
     return render(
         request,
-        'authors/pages/dashboard_recipe_create.html',
+        'authors/pages/dashboard_recipe.html',
         context={
             'form': form,
         }
