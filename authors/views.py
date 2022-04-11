@@ -156,7 +156,6 @@ def dashboard_recipe_new(request):
         recipe.author = request.user
         recipe.preparation_steps_is_html = False
         recipe.is_published = False
-        recipe.slug = recipe.title
 
         recipe.save()
 
