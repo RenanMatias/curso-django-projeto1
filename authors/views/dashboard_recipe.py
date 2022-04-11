@@ -8,9 +8,10 @@ from recipes.models import Recipe
 
 
 class DashboardRecipe(View):
-    def get_recipe(self, id):
+    def __get_recipe(self, id=None):
+        recipe = None
 
-        if id:
+        if id is not None:
             recipe = Recipe.objects.filter(
                 is_published=False,
                 author=self.request.user,
@@ -22,7 +23,7 @@ class DashboardRecipe(View):
 
         return recipe
 
-    def render_recipe(self, form):
+    def __render_recipe(self, form):
         return render(
             self.request,
             'authors/pages/dashboard_recipe.html',
@@ -31,13 +32,13 @@ class DashboardRecipe(View):
             }
         )
 
-    def get(self, request, id):
-        recipe = self.get_recipe(id)
+    def get(self, request, id=None):
+        recipe = self.__get_recipe(id)
         form = AuthorRecipeForm(instance=recipe)
-        return self.render_recipe(form)
+        return self.__render_recipe(form)
 
-    def post(self, request, id):
-        recipe = self.get_recipe(id)
+    def post(self, request, id=None):
+        recipe = self.__get_recipe(id)
         form = AuthorRecipeForm(
             data=request.POST or None,
             files=request.FILES or None,
@@ -57,6 +58,11 @@ class DashboardRecipe(View):
             messages.success(
                 request, 'Your recipe has been saved successfully!')
 
-            return redirect(reverse('authors:dashboard_recipe_edit', args=(id,)))
+            return redirect(
+                reverse(
+                    'authors:dashboard_recipe_edit',
+                    args=(recipe.id,)
+                )
+            )
 
-        return self.render_recipe(form)
+        return self.__render_recipe(form)
