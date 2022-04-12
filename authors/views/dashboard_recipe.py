@@ -23,7 +23,7 @@ class DashboardRecipe(View):
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
-    def __get_recipe(self, id=None):
+    def get_recipe(self, id=None):
         recipe = None
 
         if id is not None:
@@ -38,7 +38,7 @@ class DashboardRecipe(View):
 
         return recipe
 
-    def __render_recipe(self, form):
+    def render_recipe(self, form):
         return render(
             self.request,
             'authors/pages/dashboard_recipe.html',
@@ -48,12 +48,12 @@ class DashboardRecipe(View):
         )
 
     def get(self, request, id=None):
-        recipe = self.__get_recipe(id)
+        recipe = self.get_recipe(id)
         form = AuthorRecipeForm(instance=recipe)
-        return self.__render_recipe(form)
+        return self.render_recipe(form)
 
     def post(self, request, id=None):
-        recipe = self.__get_recipe(id)
+        recipe = self.get_recipe(id)
         form = AuthorRecipeForm(
             data=request.POST or None,
             files=request.FILES or None,
@@ -80,4 +80,16 @@ class DashboardRecipe(View):
                 )
             )
 
-        return self.__render_recipe(form)
+        return self.render_recipe(form)
+
+
+@method_decorator(
+    login_required(login_url='authors:login', redirect_field_name='next'),
+    name='dispatch'
+)
+class DashboardRecipeDelete(DashboardRecipe):
+    def post(self, *args, **kwargs):
+        recipe = self.get_recipe(self.request.POST.get('id'))
+        recipe.delete()
+        messages.success(self.request, 'Delted successfully.')
+        return redirect(reverse('authors:dashboard'))
