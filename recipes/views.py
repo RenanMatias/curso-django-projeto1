@@ -82,7 +82,8 @@ class RecipeListViewSearch(RecipeListViewBase):
 
         qs = qs.filter(
             Q(title__icontains=search_term) |
-            Q(description__icontains=search_term)
+            Q(description__icontains=search_term),
+            is_published=True,
         )
 
         return qs
@@ -113,3 +114,8 @@ class RecipeDetail(DetailView):
         })
 
         return ctx
+
+    def get_queryset(self, *args, **kwargs):
+        qs = super().get_queryset(*args, **kwargs)
+        qs = qs.filter(is_published=True,)
+        return qs
