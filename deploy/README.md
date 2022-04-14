@@ -92,7 +92,7 @@ CREATE DATABASE basededados WITH OWNER usuario;
 ```sql
 GRANT ALL PRIVILEGES ON DATABASE basededados TO usuario;
 ```
-# Saindo
+## Saindo
 ```
 \q
 ```
@@ -103,17 +103,93 @@ sudo systemctl restart postgresql
 Caso queira mais detalhes: https://youtu.be/VLpPLaGVJhI  
 Mais avançado: https://youtu.be/FZaEukN_raA
 
-## Instalando e Configurando o git
+# Instalando e Configurando o git
 ```
 sudo apt install git
 ```
-- Altere o *Seu Nome* e o *seu_email@gmail.com* conforme seus dados
+- Altere o *Seu Nome* e o *seu_email@dominio.com* conforme seus dados
 ```
 git config --global user.name 'Seu nome'
 ```
 ```
-git config --global user.email 'seu_email@gmail.com'
+git config --global user.email 'seu_email@dominio.com'
 ```
 ```
 git config --global init.defaultBranch main
 ```
+
+# Criando um repositório no servidor
+
+Um repositório bare é um repositório transitório (como se fosse um github).
+Na raiz do projeto deve ser criada uma pasta, e dentro dela, iniciar um repositório bare.
+
+```
+mkdir -p ~/app_bare
+```
+```
+cd ~/app_bare
+```
+```
+git init --bare
+```
+```
+cd ~
+```
+
+# Criando o repositório da aplicação
+
+Criação do repositório original do git
+
+```
+mkdir -p ~/app_repo
+```
+```
+cd ~/app_repo
+```
+```
+git init
+```
+```
+git remote add origin ~/app_bare
+```
+```
+git add . && git commit -m 'Initial'
+```
+```
+cd ~
+```
+
+- No seu computador local, adicione o bare como remoto:
+
+Altere o trecho `username@ip_servidor` para o endereço do servidor
+```
+git remote add app_bare username@ip_servidor:~/app_bare
+```
+```
+git push app_bare <branch>
+```
+
+- No servidor, em app_repo, faça pull:
+
+```
+cd ~/app_repo
+```
+```
+git pull origin <branch>
+```
+
+# Criando o ambiente virtual
+
+```
+cd  ~/app_repo
+git pull origin <branch>
+python3.9 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+pip install psycopg2
+pip install gunicorn
+```
+
+## Configurando o nginx
+
+Use o arquivo e as explicações disponibilizadas na aula.
