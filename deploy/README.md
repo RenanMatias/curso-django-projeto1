@@ -65,6 +65,9 @@ sudo apt install certbot python3-certbot-nginx -y
 ```
 sudo apt install libpq-dev -y
 ```
+```
+sudo apt install curl -y
+```
 
 ## Instalando o PostgreSQL
 
@@ -190,6 +193,9 @@ python3.9 -m venv venv
 ```
 pip install -r requirements.txt
 ```
+```
+pip install psycopg2
+```
 
 ## Cria e configura o arquivo `.env`
 ```
@@ -210,13 +216,15 @@ python manage.py migrate
 ```
 - Se for o caso, exclua o arquivo db.sqlite3(`rm db.sqlite3`), pois o postgresql será utilizado.
 
-pip install psycopg2
-```
+# Instalando e configurando o [Gunicorn](https://docs.gunicorn.org/en/stable/install.html)
+O Gunicorn faz a comunicação entre o `nginx` e a nossa aplicação Django.
+
 ```
 pip install gunicorn
 ```
+- Seguir o passo a passo do Gist [gunicorn.md](https://gist.github.com/RenanMatias/6e1de435b53bed4df969c14007a7fc49)
 
-
-## Configurando o nginx
+## Configurando o [NGINX](https://www.nginx.com/)
+O NGINX é um servidor web que substituará o `runserver` do Django.
 
 Use o arquivo e as explicações disponibilizadas na aula.
