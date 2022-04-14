@@ -166,7 +166,7 @@ Altere o trecho `username@ip_servidor` para o endereço do servidor
 git remote add app_bare username@ip_servidor:~/app_bare
 ```
 ```
-git push app_bare <branch>
+git push app_bare main
 ```
 
 - No servidor, em app_repo, faça pull:
@@ -175,20 +175,47 @@ git push app_bare <branch>
 cd ~/app_repo
 ```
 ```
-git pull origin <branch>
+git pull origin main
 ```
 
 # Criando o ambiente virtual
 
+- Ainda no servidor, dentro da pasta app_repo:
 ```
-cd  ~/app_repo
-git pull origin <branch>
 python3.9 -m venv venv
+```
+```
 . venv/bin/activate
+```
+```
 pip install -r requirements.txt
+```
+
+## Cria e configura o arquivo `.env`
+```
+cp .env-exemple .env
+```
+```
+nano .env
+```
+- Faça as alterações pertinentes e depois salve o arquivo (CONTROL-O) e depois fecha (CONTROL-X)
+
+## Valida se o Djando está funcionando:
+```
+python manage.py runserver
+```
+- Se confirmado, saia do servidor com `CONTROL-C`
+```
+python manage.py migrate
+```
+- Se for o caso, exclua o arquivo db.sqlite3(`rm db.sqlite3`), pois o postgresql será utilizado.
+
 pip install psycopg2
+```
+```
 pip install gunicorn
 ```
+
 
 ## Configurando o nginx
 
