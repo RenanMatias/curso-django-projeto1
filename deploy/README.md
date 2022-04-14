@@ -63,11 +63,57 @@ sudo apt install nginx -y
 sudo apt install certbot python3-certbot-nginx -y
 ```
 ```
-sudo apt install postgresql postgresql-contrib -y
-```
-```
 sudo apt install libpq-dev -y
 ```
+
+## Instalando o PostgreSQL
+
+```
+sudo apt install postgresql postgresql-contrib -y
+```
+
+Caso queira mais detalhes: https://youtu.be/VLpPLaGVJhI  
+Mais avançado: https://youtu.be/FZaEukN_raA
+
+### Configurações
+
+```
+sudo -u postgres psql
+```
+- Criando um super usuário
+```sql
+CREATE ROLE usuario WITH LOGIN SUPERUSER CREATEDB CREATEROLE PASSWORD 'senha';
+```
+- Criando a base de dados
+```sql
+CREATE DATABASE basededados WITH OWNER usuario;
+```
+- Dando permissões
+```sql
+GRANT ALL PRIVILEGES ON DATABASE basededados TO usuario;
+```
+# Saindo
+```
+\q
+```
+```
+sudo systemctl restart postgresql
+```
+
+Caso queira mais detalhes: https://youtu.be/VLpPLaGVJhI  
+Mais avançado: https://youtu.be/FZaEukN_raA
+
+## Instalando e Configurando o git
 ```
 sudo apt install git
+```
+- Altere o *Seu Nome* e o *seu_email@gmail.com* conforme seus dados
+```
+git config --global user.name 'Seu nome'
+```
+```
+git config --global user.email 'seu_email@gmail.com'
+```
+```
+git config --global init.defaultBranch main
 ```
