@@ -68,6 +68,9 @@ sudo apt install libpq-dev -y
 ```
 sudo apt install curl -y
 ```
+```
+sudo timedatectl set-timezone America/Sao_Paulo
+```
 
 ## Instalando o PostgreSQL
 
@@ -224,7 +227,30 @@ pip install gunicorn
 ```
 - Seguir o passo a passo do Gist [gunicorn.md](https://gist.github.com/RenanMatias/6e1de435b53bed4df969c14007a7fc49)
 
-## Configurando o [NGINX](https://www.nginx.com/)
+# Configurando o [NGINX](https://www.nginx.com/)
 O NGINX é um servidor web que substituará o `runserver` do Django.
 
-Use o arquivo e as explicações disponibilizadas na aula.
+## HTTP
+- Fazer as alterações de acordo com o Gists [Configuração do NGINX HTTP](https://gist.github.com/RenanMatias/d5d24e11e008dba99b3e3f56f92add14)
+- Copiar todo o arquivo alterado;
+```
+sudo nano /etc/nginx/sites-available/<nome_do_projeto>
+```
+- Colar
+- Salve o arquivo (CONTROL-O) e depois fecha (CONTROL-X)
+```
+sudo rm /etc/nginx/sites-enabled/default
+```
+```
+sudo ln -s /etc/nginx/sites-available/<nome_do_projeto> /etc/nginx/sites-enabled/<nome_do_projeto>
+```
+- Tetar se a configuração está certa
+```
+sudo nginx -t
+```
+- O retorno deve ser:
+  - `nginx: the configuration file /etc/nginx/nginx.conf syntax is ok`
+  - `nginx: configuration file /etc/nginx/nginx.conf test is successful`
+```
+sudo systemctl restart nginx
+```
