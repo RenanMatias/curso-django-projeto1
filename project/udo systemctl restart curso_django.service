@@ -1,0 +1,17 @@
+[0;1;32m●[0m curso_django.service - Gunicorn daemon (You can change if you want)
+     Loaded: loaded (/etc/systemd/system/curso_django.service; disabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Thu 2022-04-14 23:25:09 UTC; 3min 54s ago
+TriggeredBy: [0;1;32m●[0m curso_django.socket
+   Main PID: 30425 (gunicorn)
+      Tasks: 7 (limit: 1151)
+     Memory: 186.0M
+     CGroup: /system.slice/curso_django.service
+             ├─30425 /home/renanm/app_repo/venv/bin/python3.9 /home/renanm/app_repo/venv/bin/gunicorn --error-logfile /home/renanm/app_repo/gunicorn-error-log --enable-stdio-inheritance --log-level debug --capture-output --access-logfile - --workers 6 --bind unix:/run/curso_django.socket project.wsgi:application
+             ├─30426 /home/renanm/app_repo/venv/bin/python3.9 /home/renanm/app_repo/venv/bin/gunicorn --error-logfile /home/renanm/app_repo/gunicorn-error-log --enable-stdio-inheritance --log-level debug --capture-output --access-logfile - --workers 6 --bind unix:/run/curso_django.socket project.wsgi:application
+             ├─30427 /home/renanm/app_repo/venv/bin/python3.9 /home/renanm/app_repo/venv/bin/gunicorn --error-logfile /home/renanm/app_repo/gunicorn-error-log --enable-stdio-inheritance --log-level debug --capture-output --access-logfile - --workers 6 --bind unix:/run/curso_django.socket project.wsgi:application
+             ├─30428 /home/renanm/app_repo/venv/bin/python3.9 /home/renanm/app_repo/venv/bin/gunicorn --error-logfile /home/renanm/app_repo/gunicorn-error-log --enable-stdio-inheritance --log-level debug --capture-output --access-logfile - --workers 6 --bind unix:/run/curso_django.socket project.wsgi:application
+             ├─30429 /home/renanm/app_repo/venv/bin/python3.9 /home/renanm/app_repo/venv/bin/gunicorn --error-logfile /home/renanm/app_repo/gunicorn-error-log --enable-stdio-inheritance --log-level debug --capture-output --access-logfile - --workers 6 --bind unix:/run/curso_django.socket project.wsgi:application
+             ├─30430 /home/renanm/app_repo/venv/bin/python3.9 /home/renanm/app_repo/venv/bin/gunicorn --error-logfile /home/renanm/app_repo/gunicorn-error-log --enable-stdio-inheritance --log-level debug --capture-output --access-logfile - --workers 6 --bind unix:/run/curso_django.socket project.wsgi:application
+             └─30431 /home/renanm/app_repo/venv/bin/python3.9 /home/renanm/app_repo/venv/bin/gunicorn --error-logfile /home/renanm/app_repo/gunicorn-error-log --enable-stdio-inheritance --log-level debug --capture-output --access-logfile - --workers 6 --bind unix:/run/curso_django.socket project.wsgi:application
+
+Apr 14 23:25:09 curso-django systemd[1]: Started Gunicorn daemon (You can change if you want).
