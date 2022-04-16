@@ -1,27 +1,39 @@
-# https://www.nginx.com/blog/using-free-ssltls-certificates-from-lets-encrypt-with-nginx/
-#
-# REPLACES
-# ____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____ = Replace with your domain
-# __PROJECT_FOLDER__ = Replace with the path to the folder for the project
-# __STATIC_FOLDER_PATH__ = Replace with the path to the folder for static files
-# __MEDIA_FOLDER_PATH__ = Replace with the path to the folder for media files
-# __SOCKET_NAME__ = Replace with your unix socket name
-# 
-# For letsencrypt and Ubuntu:
-# sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
-# sudo apt install nginx certbot python3-certbot-nginx -y
-# sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
-# sudo systemctl stop nginx
-# sudo certbot certonly --standalone -d ____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____
-# sudo chmod -R 755 __PROJECT_FOLDER__
-# sudo nano /etc/nginx/sites-available/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____
-# Add contents of this file
-# sudo ln -s /etc/nginx/sites-available/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____ /etc/nginx/sites-enabled/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____
-#
-# Set timezone
-# List - timedatectl list-timezones
-# sudo timedatectl set-timezone America/Sao_Paulo
-#
+# NGINX HTTPS
+## Reference
+https://www.nginx.com/blog/using-free-ssltls-certificates-from-lets-encrypt-with-nginx/
+
+## Replaces
+- `____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____` = Replace with your domain
+- `__PROJECT_FOLDER__` = Replace with the path to the folder for the project
+- `__STATIC_FOLDER_PATH__` = Replace with the path to the folder for static files
+- `__MEDIA_FOLDER_PATH__` = Replace with the path to the folder for media files
+- `__SOCKET_NAME__` = Replace with your unix socket name
+
+## For letsencrypt and Ubuntu:
+```
+sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
+```
+```
+sudo apt install nginx certbot python3-certbot-nginx -y
+```
+- Obs.: O comando abaixo pode demorar um pouco para terminar de executar
+```
+sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 4096
+```
+```
+sudo systemctl stop nginx
+```
+```
+sudo certbot certonly --standalone -d ____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____
+```
+```
+sudo chmod -R 755 __PROJECT_FOLDER__
+```
+```
+sudo nano /etc/nginx/sites-available/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____
+```
+- Add contents of this file
+```
 # HTTP
 server {
   listen 80;
@@ -127,3 +139,18 @@ server {
   #access_log  /var/log/nginx/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____-access.log;
   error_log   /var/log/nginx/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____-error.log;
 }
+```
+
+```
+sudo ln -s /etc/nginx/sites-available/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____ /etc/nginx/sites-enabled/____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____
+```
+
+# Set timezone
+```
+sudo timedatectl set-timezone America/Sao_Paulo
+```
+
+# Reboot the server
+```
+sudo reboot
+```

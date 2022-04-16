@@ -15,6 +15,8 @@ server {
   listen [::]:80;
   server_name ____REPLACE_ME_WITH_YOUR_OWN_DOMAIN____;
 
+  client_max_body_size 10M;
+
   # Add index.php to the list if you are using PHP
   index index.html index.htm index.nginx-debian.html index.php;
   
