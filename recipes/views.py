@@ -6,7 +6,6 @@ from django.http import Http404, JsonResponse
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from utils.pagination import make_pagination
-from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Recipe
 
@@ -15,10 +14,20 @@ PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 
 def theory(request, *args, **kwargs):
 
-    try:
-        recipes = Recipe.objects.get(pk=10000)
-    except ObjectDoesNotExist:
-        recipes = None
+    recipes = Recipe.objects.filter(
+        Q(
+            Q(
+                title__icontains='da',
+                id__gt=14,
+                is_published=True,
+            ) |
+            Q(
+                id__gt=10000
+            )
+        )
+    )
+
+    recipes.select_related('author')
 
     context = {
         'recipes': recipes,
