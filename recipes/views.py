@@ -1,6 +1,7 @@
 import os
 
 from django.db.models import Q
+from django.db.models.aggregates import Count
 from django.forms.models import model_to_dict
 from django.http import Http404, JsonResponse
 from django.shortcuts import render
@@ -14,11 +15,12 @@ PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 
 def theory(request, *args, **kwargs):
 
-    # get all fields except is_published
-    recipes = Recipe.objects.defer('is_published',)
+    recipes = Recipe.objects.values('id', 'title')[:5]
+    number_of_recipes = recipes.aggregate(number=Count('id'))
 
     context = {
         'recipes': recipes,
+        'number_of_recipes': number_of_recipes['number'],
     }
 
     return render(
