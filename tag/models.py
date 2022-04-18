@@ -16,7 +16,7 @@ class Tag(models.Model):
     # Representa o model que queremos encaixar aqui
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     # Representa o id da linha do model descrito acima
-    object_id = models.PositiveIntegerField()
+    object_id = models.CharField(max_length=255)
     # Um campo que representa a relação genérica que conhece os campos acima (content_type e object_id)
     content_object = GenericForeignKey('content_type', 'object_id')
 
@@ -29,7 +29,7 @@ class Tag(models.Model):
                 )
             )
             self.slug = slugify(f'{self.name}-{rand_letters}')
-        return super().save(**args, **kwargs)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
