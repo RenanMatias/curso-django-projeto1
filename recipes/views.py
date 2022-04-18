@@ -1,6 +1,6 @@
 import os
 
-from django.db.models import Q
+from django.db.models import Q, F
 from django.forms.models import model_to_dict
 from django.http import Http404, JsonResponse
 from django.shortcuts import render
@@ -15,17 +15,8 @@ PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 def theory(request, *args, **kwargs):
 
     recipes = Recipe.objects.filter(
-        Q(
-            Q(
-                title__icontains='da',
-                id__gt=14,
-                is_published=True,
-            ) |
-            Q(
-                id__gt=10000
-            )
-        )
-    )
+        id=F('author__id'),
+    ).order_by('-id', 'title')
 
     recipes.select_related('author')
 
