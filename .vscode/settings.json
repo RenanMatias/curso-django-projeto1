@@ -29,24 +29,6 @@
             "source.organizeImports": true
         }
     },
-    "[html]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "vscode.html-language-features",
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": true,
-            "strings": true
-        }
-    },
-    "[django-html]": {
-        "editor.formatOnSave": false,
-        "editor.defaultFormatter": "vscode.html-language-features",
-        "editor.quickSuggestions": {
-            "other": true,
-            "comments": true,
-            "strings": true
-        }
-    },
     "files.associations": {
         "*.js": "javascript",
         "*.jsx": "javascriptreact",
