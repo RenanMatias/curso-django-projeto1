@@ -10,6 +10,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOCALE_PATH = [
+LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
