@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from tag.models import Tag
 from utils.pagination import make_pagination
+from django.utils import translation
 
 from .models import Recipe
 
@@ -53,10 +54,14 @@ class RecipeListViewBase(ListView):
             ctx.get('recipes'),
             PER_PAGE,
         )
+
+        html_language = translation.get_language()
+
         ctx.update(
             {
                 'recipes': page_obj,
                 'pagination_range': pagination_range,
+                'html_language': html_language,
             }
         )
         return ctx
