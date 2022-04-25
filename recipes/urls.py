@@ -58,4 +58,10 @@ urlpatterns = [
         name='api_v2_detail',
 
     ),
+    path(
+        'recipes/api/v2/tag/<int:pk>/',
+        views.tag_api_detail,
+        name='api_v2_tag',
+
+    ),
 ]
