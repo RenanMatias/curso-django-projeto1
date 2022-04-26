@@ -81,7 +81,8 @@ class Recipe(models.Model):
         error_message = defaultdict(list)
 
         recipe_from_db = Recipe.objects.filter(
-            title__iexact=self.title
+            title__iexact=self.title,
+
         ).first()
 
         if recipe_from_db:
