@@ -7,5 +7,5 @@ def is_positive_number(string):
             return True
         else:
             return False
-    except ValueError:
+    except (ValueError, TypeError):
         return False
